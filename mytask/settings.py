@@ -43,8 +43,8 @@ SOCIAL_AUTH_TWITTER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAALSzHAEAAAAAtW4a34aiXNXPGCc2m61
 #'AAAAAAAAAAAAAAAAAAAAAIejGwEAAAAAzuycDPZxaIgAe%2FzhGZEwELnX%2Fw0%3Dw0eAytGGW8lZfkvIU7AeG5zWfMouhVv7EOl9jz5PEbrlHtrjLk'
 
 # Google API Details
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1048172392453-lf28kj0d7uhmfv92pordqvi8ejq4f887.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'k3qj7sLOlNSe4ZZlTngPKpSt'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '252350899208-e2puckhu9cumuf1ge0hrtdp32a62d4ma.apps.googleusercontent.com' #'1048172392453-lf28kj0d7uhmfv92pordqvi8ejq4f887.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'fpO-JSThlGrtiMleZFefFYy8' #'k3qj7sLOlNSe4ZZlTngPKpSt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
