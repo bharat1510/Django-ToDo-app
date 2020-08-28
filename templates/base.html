@@ -1,0 +1,126 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!--style-->
+  <style>
+  body {
+	background-image: url('{% static 'img/backgrounds/1.jpg' %}');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: 100vh;
+  }
+  .card {
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5),
+               0 6px 20px 0 rgba(0,0,0,0.39);
+   background: #ffffff;
+   margin-bottom : 5%;
+   border-radius: 10px;
+   padding : 2%;
+   overflow: auto;
+   resize: none;
+   text-overflow: ellipsis;
+   color: #000000;
+   width: 100%;
+  }
+  .card:hover{
+	color: #ffffff
+    background: #000000;
+  }
+  .card center {
+	color: red;
+  }
+  .card span {
+	color: #000000;
+	font-weight: bold;
+	size: 10px;
+  }
+
+  .submit_form{
+
+    text-align: center;
+    padding: 3%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),
+                0 6px 20px 0 rgba(0,0,0,0.36);
+	margin-bottom: 30px;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  {% if messages %}
+  {% for message in messages %}
+  <center><div class="alert alert-info">
+    <strong>{{message}}</strong>
+  </div>
+  </center>
+  {% endfor %}
+  {% endif %}
+
+  <center class="row">
+	<h1><i>__TODO LIST__</i></h1>
+	<a href="{% url 'index' %}"><button class="btn btn-info btn-lg">Home</button></a>
+	<hr />
+  </center>
+  
+	<div class="about-us-container section-container section-container-gray-bg">
+	        <div class="container">
+	            <div class="row">
+	            	<div class="col-12 col-lg-8">
+	                    <div class="todo-box-text">
+	                    	<div class="col-md-8" >
+								<div  class="submit_form">
+									<form  method="POST">
+									{% csrf_token %}
+									
+									<div class="form-group">
+										{{forms|crispy}}
+									</div>
+									
+									<center style="padding-top:10px;">
+									<input type="submit" class="btn btn-success btn-lg" value="submit" />
+									</center>
+									</form>
+								</div>
+							</div>												
+	                    </div>
+	                </div>
+	                <div class="col-12 col-lg-4">
+						
+						{% for i in list %}
+							<div class="card form-group">
+								<center><h3><b>{{i.title}}</b></h3></center>
+								<hr/>
+								<p> <span>Creation Date : </span> {{i.date}}</p>
+								<hr/>
+								<p><span>Message : </span> {{i.details}}</p>
+								<br />
+								<br />
+								<form action="/del/{{i.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
+								{% csrf_token %}
+								<button value="remove" type="submit"  class="btn btn-primary" style="float: right;"><i class="glyphicon glyphicon-trash"></i> &nbsp; Remove</button>
+								</form>
+							</div>
+						{% endfor%}
+						              	
+	                </div>
+	            </div>
+	        </div>
+        </div>
+</body>
+</html>
